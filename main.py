@@ -1,5 +1,13 @@
 import datetime
 import pytz
+import json
+from typing import Dict, List
+
+
+def json_formatter(obj):
+
+    data = json.loads(obj)
+    return data
 
 
 def converter_time(unix: int) -> str:
@@ -17,7 +25,9 @@ def converter_time(unix: int) -> str:
     return converted_time
 
 
-def unix_time_converter(data: dict) -> str:
+def unix_time_converter(data: Dict[str, List]) -> str:
+    data = json_formatter(data)
+
     result = ''
     indicate = 0
     count = 0
@@ -54,5 +64,5 @@ def unix_time_converter(data: dict) -> str:
 
 
 if __name__ == '__main__':
-    data = {}
+    data = '{"monday": [],"tuesday": [{"type": "open","value": 36000},{"type": "close","value": 64800}],"wednesday": [],"thursday": [{ "type": "open", "value": 37800},{"type": "close","value": 64800}],"friday": [{"type": "open","value": 36000}],"saturday": [{ "type": "close", "value": 3600},{"type": "open","value": 36000}],"sunday": [{ "type": "close","value": 3600},{"type": "open","value": 43200},{"type": "close","value": 75600}]}'
     print(unix_time_converter(data=data))

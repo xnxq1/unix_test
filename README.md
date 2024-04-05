@@ -3,3 +3,5 @@
 3. Install requirements: pip install -r requirements.txt
 
 if you want check function, in file main.py substitute your values ​​into the variable data and run the file
+
+data = Json type
